@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <br><br>
+    <title>Company Bill</title>
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+        }
+        .bill-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            position: relative; /* Relative positioning for the container */
+        }
+        .bill-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .bill-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .bill-table th, .bill-table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        .bill-table th {
+            background-color: #f2f2f2;
+        }
+        /* Style for the "Generate PDF" button */
+        #generatePdfButton {
+            color: white;
+            background-color: red;
+            position: absolute; /* Absolute positioning for the button */
+            bottom: 10px; /* Adjust the bottom position as needed */
+            right: 10px; /* Adjust the right position as needed */
+            padding: 10px; /* Add padding for better appearance */
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="bill-container">
+        <div class="bill-header">
+            <h2>Company Bill</h2>
+            <p>Date: 2023-10-02</p>
+            <p>Quote Number: Q12345</p>
+            <p>Property Name: Sample Property</p>
+        </div>
+        <table class="bill-table">
+            <thead>
+                <tr>
+                    <th>Scope of Material</th>
+                    <th>Quantity</th>
+                    <th>Description</th>
+                    <th>Warranty</th>
+                    <th>Rate</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Material 1</td>
+                    <td>10</td>
+                    <td>Description of Material 1</td>
+                    <td>1 year</td>
+                    <td>AED 100.00</td>
+                </tr>
+                <tr>
+                    <td>Material 2</td>
+                    <td>5</td>
+                    <td>Description of Material 2</td>
+                    <td>2 years</td>
+                    <td>AED 750.00</td>
+                </tr>
+                <!-- Add more rows for additional materials -->
+            </tbody>
+        </table>
+        <!-- Add the "Generate PDF" button -->
+        <br> <br>
+        <button id="generatePdfButton" style="color: white; background-color: red; ">Generate PDF</button>
+    </div>
+
+    <!-- Include the jsPDF library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script>
+        // Function to generate a PDF from the bill content
+        function generatePDF() {
+            const doc = new jsPDF();
+            doc.text('Company Bill', 10, 10);
+            // Add more content to the PDF as needed
+            // For example, you can add data from your bill table
+
+            // Save the PDF with a filename
+            doc.save('company_bill.pdf');
+        }
+
+        // Attach the generatePDF function to the button click event
+        document.getElementById('generatePdfButton').addEventListener('click', generatePDF);
+    </script>
+</body>
+</html>
